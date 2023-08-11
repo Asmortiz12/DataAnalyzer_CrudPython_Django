@@ -1,0 +1,67 @@
+<!-- student_list.html -->
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Lista de Estudiantes</title>}
+    {% load bootstrap5 %}
+    {% bootstrap_css %}
+    {% bootstrap_javascript %}
+</head>
+
+<body>
+
+    <h2>Gráfico con Matplotlib</h2>
+    <img src="data:image/png;base64,{{ plot_data_matplotlib }}" alt="Gráfico Matplotlib">
+
+    <!-- Gráfico con Seaborn -->
+    <h2>Gráfico con Seaborn</h2>
+    <img src="data:image/png;base64,{{ plot_data_seaborn }}" alt="Gráfico Seaborn">
+
+    <!-- Gráfico con Plotly -->
+    <h2>Gráfico con Plotly</h2>
+    <div>{{ plotly_html|safe }}</div>
+
+    <h1 class="text-center">Lista de Estudiantes</h1>
+    <div style="text-align: right;">
+        <a href="{% url 'add_student' %}" class="btn btn-dark">Agregar Estudiante</a>
+        <form method="post" style="display: inline;">
+            {% csrf_token %}
+            <input type="text" class="form-control-lg" name="carrer" value="{{ carrer_filter }}"
+                placeholder="Buscar por carrera">
+            <input type="submit" class="btn btn-primary" value="Buscar">
+        </form>
+    </div>
+    <div class="table-responsive">
+        <table class="table table-dark table-bordered border-light table-striped">
+            <thead>
+                <tr>
+                    <th scope="col">Id</th>
+                    <th scope="col">Names</th>
+                    <th scope="col">Surnames</th>
+                    <th scope="col">Carrer</th>
+                    <th scope="col">Semester</th>
+                    <th scope="col">Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for student in students %}
+                <tr>
+                    <td>{{ student.id }}</td>
+                    <td>{{ student.names }}</td>
+                    <td>{{ student.surnames }}</td>
+                    <td>{{ student.carrer }}</td>
+                    <td>{{ student.semester }}</td>
+                    <td>
+                        <a href="{% url 'edit_student' student.id %}" class="btn btn-secondary">Editar</a>
+                        <a href="{% url 'delete_student' student.id %}" class="btn btn-danger">Eliminar</a>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+</body>
+
+</html>

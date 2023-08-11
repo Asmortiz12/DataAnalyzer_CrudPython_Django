@@ -1,0 +1,19 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Gráficos de Distribución por Carrera</title>
+</head>
+<body>
+    <h1>Gráficos de Distribución por Carrera</h1>
+
+    <!-- Gráfico con Matplotlib -->
+    <h2>Gráfico con Matplotlib</h2>
+    <img src="{% static 'carrera_plot.png' %}" alt="Gráfico Matplotlib">
+
+    <!-- Gráfico con Seaborn -->
+    <h2>Gráfico con Seaborn</h2>
+    <img src="{% static 'carrera_seaborn_plot.png' %}" alt="Gráfico Seaborn">
+
+</body>
+</html>

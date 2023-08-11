@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Edit Student</title>
+    {% load bootstrap5 %}
+    {% bootstrap_css %}
+    {% bootstrap_javascript %}
+</head>
+
+<body>
+    <h1 class="text-center">Edit Student</h1>
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <form method="post" class="border p-4 bg-dark">
+                    {% csrf_token %}
+                    <div class="form-group">
+                        <label for="names" class="text-light">Names:</label>
+                        <input type="text" class="form-control" name="names" value="{{ student.names }}" required>
+                    </div>
+                    <br>
+                    <div class="form-group">
+                        <label for="surnames" class="text-light">Surnames:</label>
+                        <input type="text" class="form-control" name="surnames" value="{{ student.surnames }}" required>
+                    </div>
+                    <br>
+                    <div class="form-group">
+                        <label for="" class="form-label text-light">Carrera:</label>
+                        <select dropdown class="form-select custom-select mb-2" name="carrer" value="{{ student.carrer }}" required>
+                            <option selected disabled>Seleccione una carrera</option>
+                            <option>Desarrollo de software</option>
+                            <option>Marketing</option>
+                            <option>Arte Culinario</option>
+                            <option>Diseño de modas</option>
+                        </select>
+                    </div>
+                    <br>
+                    <div class="form-group">
+                        <label for="semester" class="text-light"class="text-light">Semester:</label>
+                        <input type="text" class="form-control" name="semester" value="{{ student.semester }}" required>
+                    </div>
+                    <br>
+                    <div class="form-group d-grid gap-2">
+                        <input type="submit" class="btn btn-primary" value="Update Student">
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+</body>
+
+</html>

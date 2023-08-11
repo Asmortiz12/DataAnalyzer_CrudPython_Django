@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Añadir Estudiante</title>
+    {% load bootstrap5 %}
+    {% bootstrap_css %}
+    {% bootstrap_javascript %}
+</head>
+
+<body>
+    <h1 class="text-center">Añadir Estudiante</h1>
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+
+                <form method="POST" action="{% url 'add_student' %}" class="border p-4 bg-dark rounded">
+                    {% csrf_token %}
+                    <div class="form-group">
+                        <label for="id" class="text-light">ID:</label>
+                        <input type="number" class="form-control" name="id" required>
+                    </div>
+                    <br>
+                    <div class="form-group">
+                        <label for="names" class="text-light">Nombres:</label>
+                        <input type="text" class="form-control" name="names" required>
+                    </div>
+                    <br>
+                    <div class="form-group">
+                        <label for="surnames" class="text-light">Apellidos:</label>
+                        <input type="text" class="form-control" name="surnames" required>
+                    </div>
+                    <br>
+                    <div class="form-group">
+                        <label for="" class="form-label text-light" >Carrera:</label>
+                        <select dropdown class="form-select custom-select mb-2" name="carrer" value="{{ student.carrer }}" required>
+                            <option selected disabled>Seleccione una carrera</option>
+                            <option>Desarrollo de software</option>
+                            <option>Marketing</option>
+                            <option>Arte Culinario</option>
+                            <option>Diseño de modas</option>
+                        </select>
+                    </div>
+                    <br>
+                    <div class="form-group">
+                        <label for="semester" class="text-light" >Semestre:</label>
+                        <input type="text" class="form-control" name="semester" required>
+                    </div>
+                    <br>
+                    <div class="form-group d-grid gap-2">
+                        <input type="submit" class="btn btn-primary " value="Añadir Estudiante">
+                        <a href="{% url 'student_list' %}" class="btn btn-secondary">Back to Student List</a>
+                    </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+
+</html>
